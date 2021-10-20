@@ -14,4 +14,6 @@ struct TorqueLimitTest_DLLAPI TorqueLimitTest : public mc_control::fsm::Controll
     void reset(const mc_control::ControllerResetData & reset_data) override;
 private:
     mc_rtc::Configuration config_;
+    // Time for plot
+    double t_ = 0.0;
 };

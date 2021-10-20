@@ -26,31 +26,18 @@ constraints:
 - type: dynamics
   damper: [0.1, 0.01, 0.5]
 - type: compoundJoint
-# Collision constraint
-collisions:
-- type: collision
-  useMinimal: true
-# Initial set of contacts
-contacts:
-- r1: jvrc1
-  r2: ground
-  r1Surface: LeftFoot
-  r2Surface: AllGround
-- r1: jvrc1
-  r2: ground
-  r1Surface: RightFoot
-  r2Surface: AllGround
-
 # Some options for a specific robot
-jvrc1:
+onedof:
   posture:
     stiffness: 1
     weight: 10
-  ff:
-    stiffness: 2
-    weight: 100
 # Implement some additional text states
 states: {}
+# State configurations
+configs:
+  ArmUp:
+    jointTarget:
+      joint: [1.57]
 # Transitions map
 transitions:
 - [TorqueLimitTest_Initial, OK, TorqueLimitTest_Initial, Strict]
