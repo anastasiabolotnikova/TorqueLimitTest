@@ -32,7 +32,10 @@ onedof:
     stiffness: 1
     weight: 10
 # Implement some additional text states
-states: {}
+states:
+  Wait:
+    base: Pause
+    duration: 3.0
 # State configurations
 configs:
   ArmUp:
@@ -40,6 +43,7 @@ configs:
       joint: [1.57]
 # Transitions map
 transitions:
-- [TorqueLimitTest_Initial, OK, TorqueLimitTest_Initial, Strict]
+- [TorqueLimitTest_Initial, OK, Wait, Strict]
+- [Wait, OK, ArmUp, Auto]
 # Initial state
 init: TorqueLimitTest_Initial
